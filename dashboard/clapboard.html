@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ClapboardApp">
 <head>
     <meta charset="UTF-8">
 </head>
 <body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="./clapboard.js"></script>
+
+<div ng-controller="ClapboardController">
+    <form novalidate class="simple-form" ng-submit="submit(record)">
+        <label>P1 Name: <input type="text" ng-model="player1.name"/></label><br/>
+        <label>P1 Character: <select ng-options="c for c in characters" ng-model="player1.character"></select></label><br/>
+        <label>P2 Name: <input type="text" ng-model="player2.name"/></label><br/>
+        <label>P2 Character: <select ng-options="c for c in characters" ng-model="player2.character"></select></label><br/>
+        <button type="submit", ng-model="doStartButton", ng-click="doStartButton=true">Start</button>
+        <button type="submit", ng-model="doEndButtom", ng-click="doEndButton=true">End</button>
+    </form>
+</div>
 
 </body>
 </html>
