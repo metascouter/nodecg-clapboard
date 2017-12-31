@@ -16,24 +16,35 @@ module.exports = function (nodecg) {
         return s;
     }
 
-    var imageData = null;
+    var encodedString = "Uninitialized";
 
     nodecg.listenFor("startMarker", function(data, cb)
     {
-        imageData = qr.image(encodeState("start", data));
+        encodedString = encodeState("start", data);
         cb(null);
     });
 
     nodecg.listenFor("endMarker", function(data, cb)
     {
-        imageData = qr.image(encodeState("end", data));
+        encodedString = encodeState("end", data);
         cb(null);
     });
 
     app.get('/clapboard', function(req, res) {
-        res.writeHead(200, { 'Content-Type': 'image/png' });
-        res.write(imageData.read());
-        res.end();
+        if (encodedString)
+        {
+            res.writeHead(200, 
+            { 
+                'Content-Type': 'image/png',
+                'Cache-control': 'no-cache, must-revalidate',
+            });
+
+            //
+            // TODO: Do this asynchronously
+            //
+            res.write(qr.imageSync(encodedString));
+            res.end();
+        }
     });
 
     nodecg.mount(app);
