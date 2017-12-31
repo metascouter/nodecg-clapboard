@@ -34,7 +34,7 @@ clapboardModule.controller("ClapboardController", function($scope)
         $scope.doStartButton = false;
         $scope.doEndButton = false;
 
-        $scope.execute = function(record)
+        $scope.submit = function(record)
         {
             resetButtonValues = function() 
             {
@@ -42,13 +42,25 @@ clapboardModule.controller("ClapboardController", function($scope)
                 $scope.doEndButton = false;
             }
 
+            var data = 
+            {
+                player1: { name: $scope.player1.name, character: $scope.player1.character },
+                player2: { name: $scope.player2.name, character: $scope.player2.character }
+            };
+
             if ($scope.doStartButton)
             {
-                console.log("Starto");
+                nodecg.sendMessage("startMarker", data, function (err)
+                {
+                    if (err) { console.error("Error sending startMarker message."); }
+                });
             }
             else if ($scope.doEndButton)
             {
-                console.log("Endo");
+                nodecg.sendMessage("endMarker", data, function (err)
+                {
+                    if (err) { console.error("Error sending endMarker message."); }
+                });
             }
 
             resetButtonValues();
