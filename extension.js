@@ -7,11 +7,11 @@ var app = express();
 
 module.exports = function (nodecg) {
     var encodeState = function(stateString, data) {
-        var s = "{StateString:" + stateString + ",";
-        s += "Player1Name:" + data.player1.name + ",";
-        s += "Player1Character:" + data.player1.character + ",";
-        s += "Player2Name:" + data.player2.name + ",";
-        s += "Player2Character:" + data.player2.character + "}";
+        var s = "State:" + stateString + ",";
+        s += "P1:" + data.player1.name + ",";
+        s += "P1Char:" + data.player1.character + ",";
+        s += "P2:" + data.player2.name + ",";
+        s += "P2Char:" + data.player2.character;
 
         return s;
     }
@@ -45,6 +45,14 @@ module.exports = function (nodecg) {
             res.write(qr.imageSync(encodedString));
             res.end();
         }
+    });
+	
+    app.post('/clapboard', function(req, res) {
+		//
+		// TODO
+		//
+		console.log(req.body);
+		res.end();
     });
 
     nodecg.mount(app);

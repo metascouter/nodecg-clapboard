@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ClapboardApp">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+	<link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/neon-animation/web-animations.html">
+
+	<link rel="import" href="../bower_components/iron-form/iron-form.html">
+
+	<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+	<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+	<link rel="import" href="../bower_components/paper-card/paper-card.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/paper-item/paper-item.html">
+	<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+
+	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="components/clapboard-player-card.html">
+	<link rel="import" href="components/clapboard-character-select.html">
+	<link rel="import" href="components/clapboard-form.html">
+
+	<style is="custom style">
+		body {
+			display : flex;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
 </head>
 <body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-<script src="./clapboard.js"></script>
-
-<div ng-controller="ClapboardController">
-    <form novalidate class="simple-form" ng-submit="submit(record)">
-        <label>P1 Name: <input type="text" ng-model="player1.name"/></label><br/>
-        <label>P1 Character: <select ng-options="c for c in characters" ng-model="player1.character"></select></label><br/>
-        <label>P2 Name: <input type="text" ng-model="player2.name"/></label><br/>
-        <label>P2 Character: <select ng-options="c for c in characters" ng-model="player2.character"></select></label><br/>
-        <button type="submit", ng-model="doStartButton", ng-click="doStartButton=true">Start</button>
-        <button type="submit", ng-model="doEndButtom", ng-click="doEndButton=true">End</button>
-    </form>
-</div>
+<clapboard-form></clapboard-form>
 
 </body>
 </html>

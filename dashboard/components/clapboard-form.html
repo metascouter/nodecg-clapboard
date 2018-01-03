@@ -1,0 +1,93 @@
+<dom-module id="clapboard-form">
+    <template>
+		<form is="iron-form" method="post" action="http://localhost:9090/clapboard" id="myForm">
+			<!--<clapboard-player-card player="1" id="card1"></clapboard-player-card> -->
+			<p>
+				<paper-card>
+					<span class="player-card-header">Player 1</span>
+					<paper-input label="Name" name="p1name" id="p1name"></paper-input><br/>
+					<clapboard-character-select label="Character" name="p1character" id="p1character"></clapboard-character-select>
+				</paper-card>
+			</p>
+			<p>
+				<paper-card>
+					<span class="player-card-header">Player 1</span>
+					<paper-input label="Name" name="p2name" id="p2name"></paper-input><br/>
+					<clapboard-character-select label="Character" name="p2character" id="p2character"></clapboard-character-select>
+				</paper-card>
+			</p>
+			<paper-button toggles raised on-click="formSubmit">Submit</paper-button>
+		</form>
+    </template>
+
+    <script>
+        class ClapboardForm extends Polymer.Element {
+            static get is() { return "clapboard-form"; }
+
+			formSubmit(event) 
+			{
+				console.log(this.$.myForm.children);
+				console.log(this.$.p1name.value);
+				console.log(this.$.p2name.value);
+				console.log(this.$.p1character.value); // TODO: Inline these
+				console.log(this.$.p2character.value);
+				//this.$.myForm.submit();
+				// TODO: jQuery
+			}
+        }
+
+/*
+        function formSubmit(e) {
+			var form = document.getElementById("myForm");
+			if(form) {
+				form.submit();
+			} 
+			else
+			{
+				console.log("failed :(");
+			}
+
+			Polymer.dom(e).localTarget.parentElement.submit();
+
+			var player1Name = document.getElementById('p1name');
+			if (player1Name) { console.log(player1Name); }
+			else { console.log("nope"); }
+			//document.getElementById('p1character')
+			//var player2Name = document.getElementById('p2name').value;
+			//document.getElementById('p1character')
+
+			/*
+            resetButtonValues = function() 
+            {
+                $scope.doStartButton = false;
+                $scope.doEndButton = false;
+            }
+
+            var data = 
+            {
+                player1: { name: $scope.player1.name, character: $scope.player1.character },
+                player2: { name: $scope.player2.name, character: $scope.player2.character }
+            };
+
+            if ($scope.doStartButton)
+            {
+                nodecg.sendMessage("startMarker", data, function (err)
+                {
+                    if (err) { console.error("Error sending startMarker message."); }
+                });
+            }
+            else if ($scope.doEndButton)
+            {
+                nodecg.sendMessage("endMarker", data, function (err)
+                {
+                    if (err) { console.error("Error sending endMarker message."); }
+                });
+            }
+
+            resetButtonValues();
+        }
+			*/
+
+        customElements.define(ClapboardForm.is, ClapboardForm);
+    </script>
+</dom-module>

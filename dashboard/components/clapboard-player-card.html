@@ -1,0 +1,33 @@
+<dom-module id="clapboard-player-card">
+	<template>
+		<style is="custom-style">
+			.player-card-header { @apply(--paper-font-headline); }
+		</style>
+
+		<p>
+		<paper-card>
+			<span class="player-card-header">Player {{player}}</span>
+			<paper-input label="Name" name="p{{player}}name" id="p{{player}}name"></paper-input><br/>
+			<clapboard-character-select label="Character" name="p{{player}}character" id="p{{player}}character"></clapboard-character-select>
+		</paper-card>
+		</p>
+	</template>
+
+	<script>
+		class ClapboardPlayerCard extends Polymer.Element {
+				static get is() { return "clapboard-player-card"; }
+
+				static get properties() {
+					return { player : { value: -1 } };
+				}
+
+				getPlayerId() {
+					return this.player.value;
+				}
+
+			};
+		
+		customElements.define(ClapboardPlayerCard.is, ClapboardPlayerCard);
+	</script>
+</dom-module>
+

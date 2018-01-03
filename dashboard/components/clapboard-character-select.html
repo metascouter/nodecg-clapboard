@@ -1,0 +1,40 @@
+<dom-module id="clapboard-character-select">
+	<template>
+		<paper-dropdown-menu label="[[label]]" selected-item-label="{{selected}}">
+			<paper-listbox slot="dropdown-content" class="dropdown-content" name="dfasdfasd">
+				<template is="dom-repeat" items="{{characters}}" as="character">
+					<paper-item>{{character}}</paper-item>
+				</template>
+			</paper-listbox>
+		</paper-dropdown-menu>
+		<input is="iron-input" name="[[name]]" type="hidden" value$="[[selected]]">
+	</template>
+
+	<script>
+		class ClapboardCharacterSelect extends Polymer.Element {
+				static get is() { return "clapboard-character-select"; }
+
+				static get properties() {
+					return {
+						characters : {
+							type: Array,
+							value: function() {
+								return ["Bowser", "DK", "Dr.Mario", "Falco", "Falcon", "Fox", "Game&Watch", "Ganondorf", "Ice Climbers", "Jigglypuff", "Kirby", "Link", "Luigi", "Mario", "Marth", "Mewtwo", "Ness", "Peach", "Pichu", "Pikachu", "Roy", "Samus", "Sheik", "Yoshi", "Young Link", "Zelda"];
+								}
+						},
+						name : {
+							type: String,
+							value : null
+						},
+						label : {
+							type: String,
+							value: "Default"
+						}};
+				}
+			};
+		
+		customElements.define(ClapboardCharacterSelect.is, ClapboardCharacterSelect);
+
+	</script>
+</dom-module>
+

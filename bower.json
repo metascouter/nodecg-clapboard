@@ -1,0 +1,28 @@
+{
+  "name": "nodecg-clapboard",
+  "description": "Digital clapboard for tournament post-production analysis.",
+  "main": "",
+  "authors": [
+    "Phil Johnson"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "nodecg-bundle"
+  ],
+  "homepage": "https://github.com/metascouter/nodecg-clapboard",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-button": "PolymerElements/paper-button#^2.0.0",
+    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.1",
+    "paper-item": "PolymerElements/paper-item#^2.0.0",
+    "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
+    "paper-card": "PolymerElements/paper-card#^2.0.0",
+    "iron-form": "PolymerElements/iron-form#^2.0.1"
+  }
+}
